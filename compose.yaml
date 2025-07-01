@@ -1,0 +1,36 @@
+services:
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    restart: always
+    environment:
+      # Contraseña de root y credenciales de usuario para MySQL
+      MYSQL_ROOT_PASSWORD: mysql_root_password
+      MYSQL_DATABASE: example_db
+      MYSQL_USER: example_user
+      MYSQL_PASSWORD: example_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./seed/mysql_init:/docker-entrypoint-initdb.d
+
+  
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: phpmyadmin
+    restart: always
+    depends_on:
+      - mysql
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      PMA_USER: example_user
+      PMA_PASSWORD: example_password
+    ports:
+      - "8080:80"
+
+
+volumes:
+  mysql_data:
