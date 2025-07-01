@@ -1679,7 +1679,7 @@ requires-dist = [
     { name = "aiohttp", specifier = ">=3.12.13" },
     { name = "asyncio", specifier = ">=3.4.3" },
     { name = "cryptography", specifier = ">=45.0.4" },
-    { name = "django", specifier = ">=5.2.3" },
+    { name = "django", specifier = ">=5" },
     { name = "djangorestframework", specifier = ">=3.16.0" },
     { name = "fastapi", specifier = ">=0.115.13" },
     { name = "flask", specifier = ">=3.1.1" },
